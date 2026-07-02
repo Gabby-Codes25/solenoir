@@ -9,7 +9,7 @@ export default function NewArticlePage() {
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [excerpt, setExcerpt] = useState("");
-  const [category, setCategory] = useState(siteConfig.categories[0].slug);
+  const [category, setCategory] = useState<string>(siteConfig.categories[0].slug);
   const [coverImage, setCoverImage] = useState("");
   const [author, setAuthor] = useState("");
   const [keywords, setKeywords] = useState("");
