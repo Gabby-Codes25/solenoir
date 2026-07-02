@@ -1,11 +1,11 @@
 export const siteConfig = {
-  name: "STRIDE & CO",
-  shortName: "STRIDE",
+  name: "SoleNoir",
+  shortName: "SoleNoir",
   tagline: "Unisex footwear & style, decoded.",
   description:
     "Honest reviews, buying guides, and outfit inspiration for sneakers, boots, bags, and everyday style — for everyone.",
   url: "https://example.com",
-  email: "hello@example.com",
+  email: "aliceukiwe13@gmail.com",
   social: {
     pinterest: "https://pinterest.com/yourbrand",
     instagram: "https://instagram.com/yourbrand",

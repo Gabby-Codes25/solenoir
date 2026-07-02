@@ -65,6 +65,7 @@ export default function NewArticlePage() {
       setStatus("error");
       setMessage("Network error. Please try again.");
     }
+    router.push("/admin/new");
   }
 
   async function handleLogout() {

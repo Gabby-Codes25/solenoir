@@ -22,10 +22,10 @@ export default function PostCard({ post }: { post: Post }) {
           </span>
         )}
       </div>
-      <h3 className="mt-3 font-display text-lg font-bold leading-snug text-ink group-hover:text-clay">
+      <h3 className="mt-3 line-clamp-2 break-words font-display text-lg font-bold leading-snug text-ink group-hover:text-clay">
         {post.title}
       </h3>
-      <p className="mt-1 line-clamp-2 text-sm text-stone">{post.excerpt}</p>
+      <p className="mt-1 line-clamp-2 break-words text-sm text-stone">{post.excerpt}</p>
       <p className="mt-2 font-mono text-[11px] uppercase tracking-wider text-stone/70">
         {post.readingTime}
       </p>
