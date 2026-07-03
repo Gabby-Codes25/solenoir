@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import PostCard from "@/components/PostCard";
+import BrandMoodboard from "@/components/brandMoodboard";
 import { getAllPosts } from "@/lib/posts";
 import { siteConfig } from "@/lib/site-config";
 
@@ -9,9 +10,8 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero: diagonal-cut image block, editorial overlap */}
       <section className="relative overflow-hidden border-b border-line bg-paper">
-        <div className="container-content grid gap-8 py-12 md:grid-cols-2 md:items-center md:py-20">
+        <div className="container-content grid gap-8 py-12 md:grid-cols-2 md:items-center md:py-14">
           <div className="relative z-10">
             <p className="eyebrow">Footwear &amp; style, for everyone</p>
             <h1 className="mt-3 font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl">
@@ -34,7 +34,7 @@ export default function HomePage() {
           </div>
 
           <div
-            className="relative aspect-[4/5] w-full overflow-hidden rounded-card bg-line md:aspect-[3/4]"
+            className="relative aspect-square w-full overflow-hidden rounded-card bg-line md:aspect-[3/4]"
             style={{ clipPath: "polygon(6% 0, 100% 0, 100% 100%, 0 94%)" }}
           >
             <Image
@@ -49,7 +49,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Category strip */}
+    <BrandMoodboard
+      colors={[
+        { label: "Forest green", hex: "#2D4A3A" },
+        { label: "Antique gold", hex: "#B8933F" },
+        { label: "Warm ivory", hex: "#F4EFE6" },
+        { label: "Midnight navy", hex: "#1B2A4A" },
+      ]}
+      feelWords={["Authentic", "Sophisticated", "Confident", "Lasting"]}
+    />
+
       <section className="border-b border-line">
         <div className="container-content grid grid-cols-2 divide-x divide-line border-x border-line sm:grid-cols-4">
           {siteConfig.categories.map((cat) => (
@@ -69,7 +78,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Latest posts */}
       <section className="container-content py-16">
         <div className="flex items-end justify-between">
           <div>
@@ -81,7 +89,7 @@ export default function HomePage() {
           <Link href="/blog" className="hidden font-mono text-xs uppercase tracking-wider text-clay hover:underline sm:block">
             View all →
           </Link>
-        </div>
+          </div>
 
         {posts.length > 0 ? (
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">

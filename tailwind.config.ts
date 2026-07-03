@@ -9,13 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#F7F5F1",
-        ink: "#1A1A18",
-        clay: "#B5563A",
-        "clay-dark": "#8F4029",
-        sage: "#8A9A7E",
-        stone: "#8C8880",
-        line: "#DEDAD1",
+        paper: "#F4EFE6",
+        ink: "#1B2A4A",
+        clay: "#2D4A3A",
+        "clay-dark": "#1F3327",
+        sage: "#B8933F",
+        stone: "#5C6270",
+        line: "#DDD4C4",
         card: "#FFFFFF",
       },
       fontFamily: {

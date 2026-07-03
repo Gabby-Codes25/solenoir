@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
   const fileContent = buildMdx({ ...payload, slug });
 
   const githubToken = process.env.GITHUB_COMMIT_TOKEN;
-  const repo = process.env.GITHUB_REPO; // format: "username/repo-name"
+  const repo = process.env.GITHUB_REPO; 
   const branch = process.env.GITHUB_BRANCH || "main";
 
   if (!githubToken || !repo) {
@@ -78,9 +78,6 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // 2. Commit the new .mdx file to GitHub via the Contents API.
-  // The writer never sees or touches GitHub directly — this uses a
-  // server-side token that belongs to you, the site owner.
   const githubApiUrl = `https://api.github.com/repos/${repo}/contents/${filePath}`;
 
   const commitResponse = await fetch(githubApiUrl, {

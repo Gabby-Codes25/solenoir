@@ -72,7 +72,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             {category.name}
           </Link>
         )}
-        <h1 className="mt-3 font-display text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl">
+        <h1 className="mt-3 break-words font-display text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl">
           {post.title}
         </h1>
         <div className="mt-4 flex items-center gap-3 font-mono text-xs uppercase tracking-wider text-stone">
@@ -106,8 +106,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       </div>
 
       <div className="mx-auto mt-10 max-w-3xl rounded-card border border-line bg-card p-5 font-mono text-[11px] uppercase tracking-wider text-stone">
-        This article contains affiliate links. We may earn a commission at no
-        extra cost to you.{" "}
+        This article contains affiliate links.{" "}
         <Link href="/affiliate-disclosure" className="text-clay hover:underline">
           Learn more
         </Link>

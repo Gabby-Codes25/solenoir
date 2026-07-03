@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --font-display: "Archivo Expanded", "Arial Narrow", sans-serif;
+    --font-display: "Playfair Display", "Georgia", serif;
     --font-body: "Inter", system-ui, sans-serif;
     --font-mono: "JetBrains Mono", monospace;
   }
@@ -28,7 +30,7 @@
   a:focus-visible,
   button:focus-visible,
   input:focus-visible {
-    outline: 2px solid #B5563A;
+    outline: 2px solid #2D4A3A;
     outline-offset: 2px;
   }
 

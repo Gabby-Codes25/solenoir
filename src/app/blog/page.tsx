@@ -17,7 +17,7 @@ export default function BlogIndexPage() {
         All Articles
       </h1>
       <p className="mt-3 max-w-lg text-stone">
-        Reviews, guides, and outfit ideas — updated regularly.
+        Reviews, guides, and outfit ideas.
       </p>
 
       {posts.length > 0 ? (

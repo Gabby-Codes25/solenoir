@@ -21,7 +21,7 @@ export default function Footer() {
             {siteConfig.description}
           </p>
           <p className="mt-4 font-mono text-[11px] uppercase tracking-wider text-paper/50">
-            As an Amazon Associate and affiliate partner, we earn from qualifying purchases.
+            Buy, wear, and style with confidence. Discover the latest trends and timeless classics in our curated collection.
           </p>
         </div>
 
