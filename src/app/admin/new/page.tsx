@@ -13,7 +13,9 @@ export default function NewArticlePage() {
   const [coverImage, setCoverImage] = useState("");
   const [author, setAuthor] = useState("");
   const [keywords, setKeywords] = useState("");
+  const [heading, setHeading] = useState("");
   const [body, setBody] = useState("");
+  const [productLink, setProductLink] = useState("");
 
   const [status, setStatus] = useState<"idle" | "saving" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -21,11 +23,7 @@ export default function NewArticlePage() {
   function handleTitleChange(value: string) {
     setTitle(value);
     setSlug(
-      value
-        .toLowerCase()
-        .trim()
-        .replace(/[^a-z0-9\s-]/g, "")
-        .replace(/\s+/g, "-")
+      value.toLowerCase().trim().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-")
     );
   }
 
@@ -34,11 +32,30 @@ export default function NewArticlePage() {
     setStatus("saving");
     setMessage("");
 
+    // Combine heading + body + product link into the same Markdown
+    // format the site already reads.
+    const fullBody = [
+      heading ? heading : "",
+      body,
+      productLink ? `[Check price](${productLink})` : "",
+    ]
+      .filter(Boolean)
+      .join("\n\n");
+
     try {
       const res = await fetch("/api/admin/publish", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, slug, excerpt, category, coverImage, author, keywords, body }),
+        body: JSON.stringify({
+          title,
+          slug,
+          excerpt,
+          category,
+          coverImage,
+          author,
+          keywords,
+          body: fullBody,
+        }),
       });
       const data = await res.json();
 
@@ -60,12 +77,13 @@ export default function NewArticlePage() {
       setCoverImage("");
       setAuthor("");
       setKeywords("");
+      setHeading("");
       setBody("");
+      setProductLink("");
     } catch {
       setStatus("error");
       setMessage("Network error. Please try again.");
     }
-    router.push("/admin/new");
   }
 
   async function handleLogout() {
@@ -105,7 +123,7 @@ export default function NewArticlePage() {
           </div>
 
           <div>
-            <label htmlFor="excerpt" className="sku-tag mb-1 block">Short summary</label>
+          <label htmlFor="excerpt" className="sku-tag mb-1 block">Short summary</label>
             <textarea
               id="excerpt"
               required
@@ -153,9 +171,6 @@ export default function NewArticlePage() {
               placeholder="https://…"
               className="w-full rounded-card border border-line bg-card px-4 py-3 text-sm text-ink focus:border-clay focus:outline-none"
             />
-            <p className="mt-1 text-xs text-stone">
-              Paste a link to an image (e.g. from Unsplash, or your own uploaded photo host).
-            </p>
           </div>
 
           <div>
@@ -169,25 +184,48 @@ export default function NewArticlePage() {
             />
           </div>
 
+          {/* NEW: Heading field */}
           <div>
-            <label htmlFor="body" className="sku-tag mb-1 block">Article body (Markdown)</label>
-            <textarea
-              id="body"
-              required
-              rows={16}
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-              placeholder={"Write your article here. Use ## for headings.\n\nTo add an affiliate product, write:\n<ProductCard product={{ name: \"...\", brand: \"...\", price: \"$85\", affiliateUrl: \"https://...\", image: \"https://...\", blurb: \"...\", sku: \"SKU-0001\" }} />"}
-              className="w-full rounded-card border border-line bg-card px-4 py-3 font-mono text-sm text-ink focus:border-clay focus:outline-none"
+            <label htmlFor="heading" className="sku-tag mb-1 block">Section heading</label>
+            <input
+              id="heading"
+              value={heading}
+              onChange={(e) => setHeading(e.target.value)}
+              placeholder="e.g. Our Top Pick"
+              className="w-full rounded-card border border-line bg-card px-4 py-3 text-sm text-ink focus:border-clay focus:outline-none"
             />
           </div>
 
+          <div>
+            <label htmlFor="body" className="sku-tag mb-1 block">Article body</label>
+            <textarea
+              id="body"
+              required
+              rows={12}
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+              placeholder="Write your article here."
+              className="w-full rounded-card border border-line bg-card px-4 py-3 text-sm text-ink focus:border-clay focus:outline-none"
+            />
+          </div>
+
+          {/* NEW: Product/affiliate link field */}
+          <div>
+            <label htmlFor="productLink" className="sku-tag mb-1 block">Affiliate product link</label>
+            <input
+              id="productLink"
+              value={productLink}
+              onChange={(e) => setProductLink(e.target.value)}
+              placeholder="https://www.amazon.com/…"
+              className="w-full rounded-card border border-line bg-card px-4 py-3 text-sm text-ink focus:border-clay focus:outline-none"
+            />
+            <p className="mt-1 text-xs text-stone">
+              Adds a &ldquo;Check price&rdquo; link at the end of the article.
+            </p>
+          </div>
+
           {message && (
-            <p
-              className={`rounded-card px-4 py-3 text-sm ${
-                status === "success" ? "bg-sage/10 text-sage" : "bg-clay/10 text-clay-dark"
-              }`}
-            >
+            <p className={`rounded-card px-4 py-3 text-sm ${status === "success" ? "bg-sage/10 text-sage" : "bg-clay/10 text-clay-dark"}`}>
               {message}
             </p>
           )}
