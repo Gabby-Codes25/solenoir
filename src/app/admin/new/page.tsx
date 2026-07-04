@@ -209,7 +209,7 @@ export default function NewArticlePage() {
             />
           </div>
 
-          {/* NEW: Product/affiliate link field */}
+          {/*Product/affiliate link field */}
           <div>
             <label htmlFor="productLink" className="sku-tag mb-1 block">Affiliate product link</label>
             <input
@@ -219,9 +219,6 @@ export default function NewArticlePage() {
               placeholder="https://www.amazon.com/…"
               className="w-full rounded-card border border-line bg-card px-4 py-3 text-sm text-ink focus:border-clay focus:outline-none"
             />
-            <p className="mt-1 text-xs text-stone">
-              Adds a &ldquo;Check price&rdquo; link at the end of the article.
-            </p>
           </div>
 
           {message && (
