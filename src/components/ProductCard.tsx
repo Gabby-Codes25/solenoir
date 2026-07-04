@@ -36,7 +36,7 @@ export default function ProductCard({ product }: { product: ProductRecommendatio
             href={product.affiliateUrl}
             target="_blank"
             rel="nofollow sponsored noopener"
-            className="inline-flex items-center justify-center gap-2 rounded-card bg-ink px-6 py-3 font-display text-sm uppercase tracking-wide text-paper transition-colors hover:bg-clay hover:no-underline"
+            className="btn-primary border rounde mt-4 self-start"
           >
             Check Price
           </a>

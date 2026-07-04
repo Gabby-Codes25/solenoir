@@ -37,7 +37,7 @@ export default function NewArticlePage() {
     const fullBody = [
       heading ? heading : "",
       body,
-      productLink ? `[Check price](${productLink})` : "",
+      productLink ? `\n<a href="${productLink}" class="affiliate-button" target="_blank" rel="nofollow sponsored noopener">Check price</a>` : "",
     ]
       .filter(Boolean)
       .join("\n\n");

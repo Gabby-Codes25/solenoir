@@ -64,4 +64,7 @@
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 rounded-card border border-ink px-6 py-3 font-display text-sm uppercase tracking-wide text-ink transition-colors hover:border-clay hover:text-clay;
   }
+  .affiliate-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-card bg-ink px-6 py-3 font-display text-sm uppercase tracking-wide text-paper transition-colors hover:bg-clay hover:no-underline;
+  }
 }
