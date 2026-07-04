@@ -192,7 +192,7 @@ export default function NewArticlePage() {
               value={heading}
               onChange={(e) => setHeading(e.target.value)}
               placeholder="e.g. Our Top Pick"
-              className="w-full rounded-card border font-bold border-line bg-card px-4 py-3 text-sm text-ink focus:border-clay focus:outline-none"
+              className="w-full rounded-card border border-line bg-card px-4 py-3 text-sm text-ink focus:border-clay focus:outline-none"
             />
           </div>
 
